@@ -2,7 +2,8 @@
 
 #include "selection_screen.h"
 
-int SelectionScreen::display_choice() {
+int SelectionScreen::display_choice()
+{
     std::cout << "---------------- \n";
     std::cout << "選択してください \n";
     std::cout << "---------------- \n";

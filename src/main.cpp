@@ -2,7 +2,8 @@
 #include "selection_screen.h"
 // #include "task.h"
 
-int main() {
+int main()
+{
     SelectionScreen select;
     int choice;
     choice = select.display_choice();
