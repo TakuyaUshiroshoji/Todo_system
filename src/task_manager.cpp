@@ -1,11 +1,17 @@
+#include <string>
+#include <ctime>
+#include <iostream>
+
 #include "task_manager.h"
-// #include "dateformatter.h"
-// void TaskManager::displayTask() const
-// {
-//     std::cout << "ID: " << id
-//               << " | 内容: " << title
-//               << " | 状態: " << (isCompleted ? "完了" : "未完了")
-//               << " | 作成日: " << DateFormatter::format(create_date) // formatterかける
-//               << " | 期限: " << DateFormatter::format(due_date)      // formatterかける
-//               << "\n";
-// }
+#include "dateformatter.h"
+
+int TaskManager::addTask()
+{
+    std::cout << "タイトルを入力してください: ";
+    std::getline(std::cin, title);
+    std::cout << "期限を YYYY-MM-DD 形式で入力してください: ";
+    std::getline(std::cin, due_date);
+
+    // 入力された日付文字列を日付構造体に変換
+    DateFormatter::stringToTime(due_date);
+}

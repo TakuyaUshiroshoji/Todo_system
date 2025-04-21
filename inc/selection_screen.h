@@ -3,10 +3,11 @@
 
 #include <string>
 
-class SelectionScreen {
+class SelectionScreen
+{
 public:
     int choice;
-    int display_choice();
+    int displayChoice();
 };
 
 #endif // SELECTION_SCREEN_H

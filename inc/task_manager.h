@@ -1,6 +1,10 @@
 #ifndef TASK_MANAGER_H
 #define TASK_MANAGER_H
 
+#include <vector>
+
+#include "task.h"
+
 ///
 /// @brief TaskManagerクラスはタスク一覧
 ///
@@ -9,7 +13,14 @@
 class TaskManager
 {
 public:
+    int addTask();
+    void deleteTask();
+
 private:
+    std::string title;
+    std::string due_date;
+    std::vector<Task> tasks;
+    int next_id;
 };
 
 #endif // TASK_MANAGER_H
