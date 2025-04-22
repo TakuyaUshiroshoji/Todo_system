@@ -13,6 +13,12 @@ public:
     std::tm getCreateDate() const;
     std::tm getDueDate() const;
     bool getIsCompleted() const;
+    int setId();
+    std::string setTitle();
+    std::tm setCreateDate();
+    std::tm setDueDate();
+    bool setIsCompleted();
+
     void display() const;
 
 private:

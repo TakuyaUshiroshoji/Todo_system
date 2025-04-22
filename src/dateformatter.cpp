@@ -16,13 +16,21 @@ std::string DateFormatter::timeToString(const std::tm &date, const std::string &
 }
 
 // 文字列を日付構造体に変換するメソッド
-std::tm DateFormatter::stringToTime(const std::string &date_input)
+bool DateFormatter::stringToTime(const std::string &input_date, std::tm &output_date)
 {
     int year, month, day;
-    sscanf(date_input.c_str(), "%d-%d-%d", &year, &month, &day);
-    std::tm due_date{};
-    due_date.tm_year = year - 1900;
-    due_date.tm_mon = month - 1;
-    due_date.tm_mday = day;
-    return due_date;
+
+    // 入力データのチェック
+    if (sscanf(input_date.c_str(), "%d-%d-%d", &year, &month, &day) != 3)
+    {
+        return false;
+    }
+
+    std::tm tmp = {};
+    tmp.tm_year = year - 1900;
+    tmp.tm_mon = month - 1;
+    tmp.tm_mday = day;
+
+    output_date = tmp;
+    return true;
 }

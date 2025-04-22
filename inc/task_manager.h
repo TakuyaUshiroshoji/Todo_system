@@ -17,8 +17,6 @@ public:
     void deleteTask();
 
 private:
-    std::string title;
-    std::string due_date;
     std::vector<Task> tasks;
     int next_id;
 };
