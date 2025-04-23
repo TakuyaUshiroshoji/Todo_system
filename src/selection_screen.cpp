@@ -11,6 +11,6 @@ int SelectionScreen::displayChoice()
     std::cout << "2.タスクを表示 \n";
     std::cout << "3.タスクを削除 \n";
     std::cout << "4.終了 \n";
-    std::cin >> choice;
-    return choice;
+    std::cin >> choice_;
+    return choice_;
 }

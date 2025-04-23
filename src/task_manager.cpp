@@ -3,10 +3,10 @@
 #include <iostream>
 
 #include "task_manager.h"
-#include "dateformatter.h"
+#include "date_formatter.h"
 #include "task.h"
 
-int TaskManager::addTask()
+bool TaskManager::addTask()
 {
     std::string title;
     std::string input_due_date;
@@ -21,16 +21,29 @@ int TaskManager::addTask()
     if (!DateFormatter::stringToTime(input_due_date, output_due_date))
     {
         std::cout << "日付の形式が正しくありません。\n";
-        return -1;
+        return false;
     }
-
-    // タスクの作成
-    Task new_task(next_id, title, output_due_date);
-
-    tasks.push_back(new_task);
-
-    next_id++;
-
+    Task new_task(next_id_, title, output_due_date);
+    tasks_.push_back(new_task);
+    next_id_++;
     std::cout << "タスクが追加されました。\n";
-    return 0;
+    return true;
+}
+
+void TaskManager::displayTaskList() const
+{
+    std::cout << "タスク一覧を表示\n";
+    for (auto t : tasks_)
+    {
+        std::cout << t.getId()
+                  << t.getTitle()
+                  << DateFormatter::timeToString(t.getDueDate())
+                  << t.getIsCompleted()
+                  << DateFormatter::timeToString(t.getCreateDate());
+    }
+}
+
+bool deleteTaskList()
+{
+    std::cout << "削除するタスクIDを選択してください。\n";
 }

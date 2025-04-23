@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../inc/dateformatter.h"
+#include "../inc/date_formatter.h"
 
 int main(int argc, char **argv)
 {

@@ -13,12 +13,13 @@
 class TaskManager
 {
 public:
-    int addTask();
-    void deleteTask();
+    bool addTask();
+    void displayTaskList() const;
+    bool deleteTask();
 
 private:
-    std::vector<Task> tasks;
-    int next_id;
+    std::vector<Task> tasks_;
+    int next_id_;
 };
 
 #endif // TASK_MANAGER_H

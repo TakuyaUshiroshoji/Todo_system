@@ -9,7 +9,7 @@ include_directories(inc)
 # メインアプリのビルド
 add_executable(MyProject
     src/main.cpp
-    src/dateformatter.cpp
+    src/date_formatter.cpp
     src/selection_screen.cpp
     # src/task.cpp
 )
@@ -24,8 +24,8 @@ add_subdirectory(googletest)
 
 # テスト対象コードのソースもリンク
 add_executable(DateFormatterTest
-    test/dateformatter_test.cpp
-    src/dateformatter.cpp
+    test/date_formatter_test.cpp
+    src/date_formatter.cpp
 )
 
 # ヘッダーファイルのディレクトリも追加 ← ここ！

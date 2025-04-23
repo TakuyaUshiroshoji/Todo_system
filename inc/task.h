@@ -7,6 +7,7 @@
 class Task
 {
 public:
+    // Task();
     Task(int id, const std::string &title, const std::tm &due_date);
     int getId() const;
     std::string getTitle() const;
@@ -22,11 +23,11 @@ public:
     void display() const;
 
 private:
-    int id;              // タスクID
-    std::string title;   // タスクのタイトル
-    std::tm create_date; // 作成日
-    std::tm due_date;    // 期限(締切日)
-    bool isCompleted;    // 完了フラグ
+    int id_;              // タスクID
+    std::string title_;   // タスクのタイトル
+    std::tm create_date_; // 作成日
+    std::tm due_date_;    // 期限(締切日)
+    bool isCompleted_;    // 完了フラグ
 };
 
 #endif // TASK_H

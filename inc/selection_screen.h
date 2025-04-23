@@ -6,7 +6,7 @@
 class SelectionScreen
 {
 public:
-    int choice;
+    int choice_;
     int displayChoice();
 };
 
