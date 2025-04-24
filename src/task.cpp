@@ -11,12 +11,8 @@ Task::Task(int id, const std::string &title, const std::tm &due_date)
     create_date_ = *std::localtime(&now);
 }
 
-void Task::display() const
-{
-    std::cout << "ID: " << id_
-              << " | 内容: " << title_
-              << " | 状態: " << (isCompleted_ ? "完了" : "未完了")
-              << " | 作成日: " << DateFormatter::timeToString(create_date_) // formatterかける
-              << " | 期限: " << DateFormatter::timeToString(due_date_)      // formatterかける
-              << "\n";
-}
+int Task::getId() const { return id_; }
+std::string Task::getTitle() const { return title_; }
+std::tm Task::getCreateDate() const { return create_date_; }
+std::tm Task::getDueDate() const { return due_date_; }
+bool Task::getIsCompleted() const { return isCompleted_; }

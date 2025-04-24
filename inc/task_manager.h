@@ -13,9 +13,10 @@
 class TaskManager
 {
 public:
+    TaskManager();
     bool addTask();
     void displayTaskList() const;
-    bool deleteTask();
+    // bool deleteTask();
 
 private:
     std::vector<Task> tasks_;

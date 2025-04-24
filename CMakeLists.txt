@@ -11,7 +11,8 @@ add_executable(MyProject
     src/main.cpp
     src/date_formatter.cpp
     src/selection_screen.cpp
-    # src/task.cpp
+    src/task.cpp
+    src/task_manager.cpp
 )
 
 # ================================
