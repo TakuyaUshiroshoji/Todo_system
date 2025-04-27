@@ -1,4 +1,5 @@
 #include <string>
+#include <stdio.h>
 #include <ctime>
 #include <iostream>
 
@@ -47,7 +48,35 @@ void TaskManager::displayTaskList() const
     }
 }
 
-// bool deleteTaskList()
-// {
-//     std::cout << "削除するタスクIDを選択してください。\n";
-// }
+bool TaskManager::deleteTaskList()
+{
+    displayTaskList();
+    std::cout << "削除するタスクIDを選択してください。\n";
+    std::string input_task_id;
+    std::getline(std::cin, input_task_id);
+    int task_id{atoi(input_task_id.c_str())};
+
+    bool result{deleteTask(task_id)};
+    if (result)
+    {
+        std::cout << "タスクID" << task_id << "を削除しました。\n";
+    }
+    else
+    {
+        std::cout << "タスクID" << task_id << "は存在しません。 \n";
+    }
+    return result;
+}
+
+bool TaskManager::deleteTask(const int task_id)
+{
+    for (auto it = tasks_.begin(); it != tasks_.end(); ++it)
+    {
+        if (it->getId() == task_id)
+        {
+            tasks_.erase(it);
+            return true;
+        }
+    }
+    return false;
+}

@@ -16,7 +16,8 @@ public:
     TaskManager();
     bool addTask();
     void displayTaskList() const;
-    // bool deleteTask();
+    bool deleteTaskList();
+    bool deleteTask(int task_id);
 
 private:
     std::vector<Task> tasks_;

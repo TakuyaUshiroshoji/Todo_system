@@ -1,7 +1,8 @@
 #include <iostream>
+#include <limits>
+
 #include "selection_screen.h"
 #include "task_manager.h"
-#include <limits>
 
 int main()
 {
@@ -15,8 +16,6 @@ int main()
         // std::cin >> choice のあとに残った改行を捨てる
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-        std::cout << "選択されたのは" << choice << "です\n";
-
         switch (choice)
         {
         case 1:
@@ -26,7 +25,7 @@ int main()
             task_manager.displayTaskList();
             break;
         case 3:
-            std::cout << "未実装";
+            task_manager.deleteTaskList();
             break;
         case 4:
             std::cout << "終了します。\n";
