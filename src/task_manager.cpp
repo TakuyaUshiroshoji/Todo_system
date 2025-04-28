@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <ctime>
 #include <iostream>
+#include <fstream>
+#include <iomanip>
 
 #include "task_manager.h"
 #include "date_formatter.h"
@@ -79,4 +81,62 @@ bool TaskManager::deleteTask(const int task_id)
         }
     }
     return false;
+}
+
+void TaskManager::saveTasks(const std::string &file_name) const
+{
+    std::ofstream file(file_name); // 書き込み用にファイルを開く
+    if (!file)
+    {
+        std::cerr << "ファイルを開けませんでした" << std::endl;
+        return;
+    }
+
+    for (const auto &task : tasks_)
+    {
+        file << task.getId() << ","
+             << task.getTitle() << ","
+             << (task.getCreateDate().tm_year + 1900) << "-"
+             << (task.getCreateDate().tm_mon + 1) << "-"
+             << task.getCreateDate().tm_mday << ","
+             << (task.getDueDate().tm_year + 1900) << "-"
+             << (task.getDueDate().tm_mon + 1) << "-"
+             << task.getDueDate().tm_mday << ","
+             << task.getIsCompleted() << "\n";
+    }
+}
+
+void TaskManager::loadTasks(const std::string &file_name)
+{
+    std::ifstream file(file_name); // 読み込み用にファイルを開く
+    if (!file)
+    {
+        std::cerr << "ファイルを開けませんでした" << std::endl;
+        return;
+    }
+
+    std::string line;
+    while (std::getline(file, line))
+    {
+        std::stringstream line_stream(line);
+        std::string id_str, title, create_date_str, due_date_str, is_completed_str;
+
+        std::getline(line_stream, id_str, ',');
+        std::getline(line_stream, title, ',');
+        std::getline(line_stream, create_date_str, ',');
+        std::getline(line_stream, due_date_str, ',');
+        std::getline(line_stream, is_completed_str, ',');
+
+        int id{std::stoi(id_str)};
+        std::tm create_date;
+        DateFormatter::stringToTime(create_date_str, create_date);
+
+        std::tm due_date;
+        DateFormatter::stringToTime(due_date_str, due_date);
+
+        bool is_completed{std::stoi(is_completed_str)};
+
+        Task task(id, title, create_date, due_date, is_completed);
+        tasks_.push_back(task);
+    }
 }

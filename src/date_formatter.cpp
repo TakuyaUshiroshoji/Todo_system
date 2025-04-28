@@ -26,6 +26,12 @@ bool DateFormatter::stringToTime(const std::string &input_date, std::tm &output_
         return false;
     }
 
+    // 年・月・日の範囲チェック
+    if (year < 1900 || month < 1 || month > 12 || day < 1 || day > 31)
+    {
+        return false;
+    }
+
     std::tm tmp = {};
     tmp.tm_year = year - 1900;
     tmp.tm_mon = month - 1;

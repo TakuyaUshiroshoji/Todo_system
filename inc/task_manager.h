@@ -18,6 +18,8 @@ public:
     void displayTaskList() const;
     bool deleteTaskList();
     bool deleteTask(int task_id);
+    void saveTasks(const std::string &file_name) const;
+    void loadTasks(const std::string &file_name);
 
 private:
     std::vector<Task> tasks_;

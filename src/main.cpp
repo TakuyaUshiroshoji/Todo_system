@@ -8,6 +8,9 @@ int main()
 {
     SelectionScreen select;
     TaskManager task_manager;
+    std::string file_name{"tasks.txt"};
+    // 起動時にタスクを読み込み
+    task_manager.loadTasks(file_name);
     int choice{0};
 
     while (true)
@@ -19,13 +22,19 @@ int main()
         switch (choice)
         {
         case 1:
-            task_manager.addTask();
+            if (task_manager.addTask())
+            {
+                task_manager.saveTasks(file_name);
+            }
             break;
         case 2:
             task_manager.displayTaskList();
             break;
         case 3:
-            task_manager.deleteTaskList();
+            if (task_manager.deleteTaskList())
+            {
+                task_manager.saveTasks(file_name);
+            }
             break;
         case 4:
             std::cout << "終了します。\n";
