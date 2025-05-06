@@ -21,22 +21,38 @@ int main()
 
         switch (choice)
         {
+        // 1.タスクを追加
         case 1:
             if (task_manager.addTask())
             {
                 task_manager.saveTasks(file_name);
             }
             break;
+        // 2.今日のタスクを表示
         case 2:
+            break;
+        // 3.期限切れのタスクを表示
+        case 3:
+            break;
+        // 4.すべてのタスクを表示
+        case 4:
             task_manager.displayTaskList();
             break;
-        case 3:
+        // 5.タスクを削除
+        case 5:
             if (task_manager.deleteTaskList())
             {
                 task_manager.saveTasks(file_name);
             }
             break;
-        case 4:
+        // 6.タスクを編集（名前・期限）
+        case 6:
+            break;
+        // 7.完了済みタスクを表示
+        case 7:
+            break;
+        // 8.終了
+        case 8:
             std::cout << "終了します。\n";
             return 0;
         default:

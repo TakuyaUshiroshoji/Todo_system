@@ -20,6 +20,7 @@ public:
     bool deleteTask(int task_id);
     void saveTasks(const std::string &file_name) const;
     void loadTasks(const std::string &file_name);
+    bool completeTask(); // 仮 タスクを完了するメソッド
 
 private:
     std::vector<Task> tasks_;
